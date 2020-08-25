@@ -1,0 +1,33 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorAccentDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="TextStyle" parent="@android:style/TextAppearance">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#aacbb4</item>
+    </style>
+    <style name="Toolbar" parent="AppTheme">
+        <item name="android:titleTextColor">@android:color/white</item>
+        <item name="android:colorControlNormal">@android:color/white</item>
+    </style>
+    <!-- the theme applied to the application or activity -->
+    <style name="CustomActionBarTheme"
+        parent="@android:style/Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+    </style>
+
+    <!-- ActionBar styles -->
+    <style name="MyActionBar"
+        parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:actionMenuTextColor">@color/colorTextLight</item>
+        <item name="android:windowActionBarOverlay">true</item>
+    </style>
+</resources>

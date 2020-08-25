@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#ffffff"
+    android:layout_width="300dp"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    tools:context=".Activity.SignupActivity">
+    <TextView
+        android:id="@+id/tvSignUp"
+        android:text="회원가입"
+        android:textSize="20sp"
+        android:textColor="@color/colorAccent"
+        android:gravity="center"
+        android:background="#ffffff"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="53dp"
+        android:layout_width="match_parent"
+     />
+
+<!--    <RadioGroup android:id="@+id/signUptypeGroup"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginTop="100dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        android:checkedButton="@id/btnSignUpUser"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content">-->
+<!--        <RadioButton-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            android:text="사용자  "-->
+<!--            android:id="@+id/btnSignUpUser"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:onClick="OnBtnClick"/>-->
+<!--        <RadioButton-->
+<!--            android:text="버스"-->
+<!--            android:id="@+id/btnSignUpBus"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:onClick="OnBtnClick"-->
+<!--            />-->
+<!--    </RadioGroup>-->
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/etSignUpId"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:hint="차량 번호를 입력하세요"
+        app:met_iconLeft="@drawable/ic_driver"
+        app:layout_constraintTop_toBottomOf="@+id/tvSignUp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:met_floatingLabel="highlight"
+        android:focusableInTouchMode="true"
+        app:met_primaryColor="@color/colorAccent" />
+
+
+<!--        <EditText-->
+<!--        android:id="@+id/etName"-->
+<!--        android:layout_width="250dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="닉네임을 입력하세요"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/etPw2"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/etSignUpPw"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="노선번호를 입력하세요"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etSignUpId"
+        app:met_floatingLabel="highlight"
+        app:met_iconLeft="@drawable/ic_bus"
+        android:focusableInTouchMode="true"
+        app:met_primaryColor="@color/colorAccent" />
+
+    <Button
+        android:id="@+id/btnSignUp"
+        android:textSize="15sp"
+        android:textColor="#ffffff"
+        android:padding="16dp"
+        android:background="@color/colorAccent"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="회원가입"
+        android:onClick="OnBtnClick"
+        app:layout_constraintTop_toBottomOf="@+id/etSignUpPw"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
