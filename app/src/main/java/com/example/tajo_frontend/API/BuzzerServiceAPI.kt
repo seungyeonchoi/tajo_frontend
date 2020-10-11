@@ -31,7 +31,7 @@ class BuzzerServiceAPI {
             .build()
         retrofit.create(BuzzzerBookInfoService::class.java)
     }
-    fun getRouteStationInfo(route_nm:String){
+    fun getRouteStationInfo(route_nm:String,  callback: (List<Station>) -> Unit){
 
 
         val retrofit = Retrofit.Builder()
@@ -49,7 +49,7 @@ class BuzzerServiceAPI {
 
             }
             override fun onResponse(call: Call<List<Station>>, response: Response<List<Station>>) {
-
+                callback(response.body()!!)
                 Log.d("Response:: ", response.body().toString() + "\n"+ response.code())
                 if (response.code() == 200){
 
