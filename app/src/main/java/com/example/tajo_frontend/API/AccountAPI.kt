@@ -4,7 +4,10 @@ import android.app.Activity
 import android.util.Log
 import com.example.tajo_frontend.Data.Bus
 import com.example.tajo_frontend.Activity.SignInActivity
-import com.example.tajo_frontend.Activity.SignupActivity
+import com.example.tajo_frontend.Activity.SignUpActivity
+import com.example.tajo_frontend.address
+import com.example.tajo_frontend.port
+
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,8 +19,8 @@ import retrofit2.http.Headers
 import retrofit2.http.POST
 
 class AccountAPI {
-    private val URL = "http://10.0.2.2:1337/"
-
+    //private val URL = "http://10.0.2.2:1337/"
+    private val URL = address+":"+ port+"/"
     data class Accepted(
         val message:String
     )
@@ -25,11 +28,6 @@ class AccountAPI {
         val user_id:String,
         val token:String
     )
-
-//    data class BusInfo(
-//        val route_nm:String,
-//        val token: String
-//    )
     /**
      * SignIn API를 통한 사용자 로그인
      *
@@ -65,7 +63,7 @@ class AccountAPI {
             override fun onResponse(call: Call<UserInfo>, response: retrofit2.Response<UserInfo>) {
                 Log.d("Response:: ", response.toString())
                 Log.d("Response:: ", response.body().toString())
-                val a = JSONObject(response.errorBody().toString())
+               // val a = JSONObject(response.errorBody().toString())
 
                 if (response.code() == 200){
                     activity.showToast("로그인에 성공하였습니다.")
@@ -185,7 +183,7 @@ class AccountAPI {
      *
      */
 
-    fun signUpUser(id: String, pw: String, name:String, activity: SignupActivity) {
+    fun signUpUser(id: String, pw: String, name:String, activity: SignUpActivity) {
         //Retrofit 객체 생성
         val retrofit = Retrofit.Builder()
             .baseUrl(this.URL)
@@ -244,7 +242,7 @@ class AccountAPI {
      *
      */
 
-    fun signUpBus(id: String, route: String, activity: SignupActivity) {
+    fun signUpBus(id: String, route: String, activity: SignUpActivity) {
         //Retrofit 객체 생성
         val retrofit = Retrofit.Builder()
             .baseUrl(this.URL)

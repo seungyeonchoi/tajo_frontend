@@ -26,14 +26,9 @@ class BellActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-      //  setSupportActionBar(toolbar)
         actionBar!!.setDisplayShowHomeEnabled(false)
 
         setContentView(R.layout.activity_main)
-        //supportActionBar!!.setDisplayHomeAsUpEnabled(true)  // 왼쪽 버튼 사용 여부 true
-       // supportActionBar!!.title= "함 께  조"
-       // supportActionBar!!.setDisplayShowTitleEnabled(true)    // 타이틀 안보이게 하기
         //bus init
         bus = intent.getSerializableExtra("bus") as Bus
         Log.d("MainActivity::", bus.toString())

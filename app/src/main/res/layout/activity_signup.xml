@@ -6,7 +6,7 @@
     android:layout_width="300dp"
     android:orientation="vertical"
     android:layout_height="wrap_content"
-    tools:context=".Activity.SignupActivity">
+    tools:context=".Activity.SignUpActivity">
     <TextView
         android:id="@+id/tvSignUp"
         android:text="회원가입"

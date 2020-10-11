@@ -48,7 +48,6 @@ class BellAdapter(private val items: ArrayList<Bell>) : RecyclerView.Adapter<Bel
         lateinit var callback: (Int, Bell) -> Unit
         fun bind(bell: Bell) {
             with(bell) {
-
                 tvStn_id.text = bell.stn_id+" 역"
                 tvCount.text = bell.count.toString()+ " 명"
                 btnDone.setOnClickListener{

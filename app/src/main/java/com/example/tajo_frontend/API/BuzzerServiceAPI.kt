@@ -10,11 +10,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 import com.example.tajo_frontend.Data.Bell
 import com.example.tajo_frontend.Activity.BellActivity
-import io.reactivex.Observable
+import com.example.tajo_frontend.Data.Station
+import com.example.tajo_frontend.address
+import com.example.tajo_frontend.port
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 
 class BuzzerServiceAPI {
-    private val URL = "http://10.0.2.2:1337/"
+    //private val URL = "http://10.0.2.2:1337/"
+    private val URL = address +":"+ port +"/"
+
+
     /**
      * BuzzerServiceAPI  통한 버스별 예약 조회
      */
@@ -25,6 +30,37 @@ class BuzzerServiceAPI {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         retrofit.create(BuzzzerBookInfoService::class.java)
+    }
+    fun getRouteStationInfo(route_nm:String){
+
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl(this.URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        val service = retrofit.create(BuzzzerBookInfoService::class.java)
+        service.getRouteStationInfo(route_nm)?.enqueue(object : Callback<List<Station>> {
+            override fun onFailure(call: Call<List<Station>>, t: Throwable) {
+                print("asdfadsf")
+                Log.d(
+                    "BuzzerServiceAPI::", "Failed API call with call: " + call +
+                            " + exception: " + t
+                )
+
+            }
+            override fun onResponse(call: Call<List<Station>>, response: Response<List<Station>>) {
+
+                Log.d("Response:: ", response.body().toString() + "\n"+ response.code())
+                if (response.code() == 200){
+
+                }
+                else{ //400 -> message 내용에 따른 error handeling 필요함
+
+                }
+            }
+        })
+
+
     }
     fun getBellList(bus_id:String, activity: BellActivity? = null) {
         //Retrofit 객체 생성
@@ -37,9 +73,7 @@ class BuzzerServiceAPI {
         val service = retrofit.create(BuzzzerBookInfoService::class.java)
 
         //Body에 담을 데이터 생성
-        service.getBellInfo(
-            bus_id
-        )?.enqueue(object : Callback<List<Bell>> {
+        service.getBellInfo(bus_id)?.enqueue(object : Callback<List<Bell>> {
             override fun onFailure(call: Call<List<Bell>>, t: Throwable) {
                 Log.d(
                     "BuzzerServiceAPI::", "Failed API call with call: " + call +
@@ -48,7 +82,7 @@ class BuzzerServiceAPI {
                 activity?.showToast("조회에 실패했습니다! 다시 시도해주세요!")
             }
             override fun onResponse(call: Call<List<Bell>>, response: Response<List<Bell>>) {
-                Log.d("Response:: ", response.body().toString())
+                Log.d("Response:: ", response.body().toString() + "\n"+ response.code())
                 if (response.code() == 200){
                     activity?.showToast("조회에 성공했습니다!")
                     val test = listOf<Bell>(Bell(user_id = "0",bus_id = "가가",stn_id = "1번",route_nm = "302")
@@ -120,8 +154,8 @@ class BuzzerServiceAPI {
         )
         @GET("buzzer/{bus_id}") //302: {bus id}
         fun getBellInfo(@Path("bus_id")path: String): Call<List<Bell>>
-        @GET("buzzer/{bus_id}") //302: {bus id}
-        fun getBellInfo2(@Path("bus_id")path: String): Observable<List<Bell>>
+        @GET("api/route-station/{route_nm}") //302: {bus id}
+        fun getRouteStationInfo(@Path("route_nm")path: String): Call<List<Station>>
     }
     interface BuzzzerBookDeleteService {
         @Headers(
